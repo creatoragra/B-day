@@ -14,6 +14,21 @@
     <script type="text/javascript" src="./file/functions.js" charset="utf-8"></script>
     <script type="text/javascript" src="./file/love.js" charset="utf-8"></script>
     <script>
+        function updateClock() {
+            const now = new Date();
+            const elapsed = Math.floor((now - new Date('2000-01-01')) / 1000); // Example start date
+            const days = Math.floor(elapsed / (3600 * 24));
+            const hours = Math.floor((elapsed % (3600 * 24)) / 3600);
+            const minutes = Math.floor((elapsed % 3600) / 60);
+            const seconds = elapsed % 60;
+
+            console.log(`Clock updated: ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`); // Debug log
+            document.getElementById('clock').innerText = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+        }
+
+        updateClock(); // Call the updateClock function to update the clock
+        setInterval(updateClock, 1000); // Update the clock every second
+
         function playAudio() {
             var audio = document.getElementById("myAudio");
             audio.play();
@@ -38,7 +53,7 @@
                 </div>
             </div>
             <div id="clock-box">
-                <span id="clock">577 days 0 hours 0 minutes 0 seconds</span> <!-- Change to "6940 days..." if needed -->
+                <span id="clock">6940 days 12 hours 50 minutes 34 seconds</span> <!-- Change to "6940 days..." if needed -->
             </div>
             <canvas id="canvas" width="1100" height="680"></canvas>
         </div>
